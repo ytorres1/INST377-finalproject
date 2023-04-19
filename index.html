@@ -3,9 +3,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pet Adoption Site</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <div>
+
+    <header class = "header">
+        <h1> Adopt a Pet Today! </h1>
+    </header>
+
+    <div class = "description"> 
+        <h2> There are many shelter animals that are ready to be adopted 
+            from the Montgomery County Animal Services and Adoption Center. 
+            These pets are looking for a home and their home could be YOU!
+        </h2>
+        <h3> These pets can be found at: <br>
+            Montgomery County Animal Services and Adoption Center <br>
+            7315 Muncaster Mill Rd, <br> Derwood MD 20855
+        </h3>
+    </div>
+
+    <div>
+        <h4>Below are some of the pets at the Adoption Center</h4>
+        <div class="carousel">
+            <button class="prev"> prev </button>
+            <div class="slides">
+                <div class="carousel_item visible"><img id = "slide_1" src=images/dog1.jpeg></div>
+                <div class="carousel_item hidden"><img id = "slide_2" src="images/dog2.jpeg" /></div>
+                <div class="carousel_item hidden"><img id = "slide_3" src="images/cat1.jpeg" /></div>
+                <div class="carousel_item hidden"><img id = "slide_4" src="images/rabbitt1.jpeg" /></div>
+            </div>
+            <button class="next"> next </button>
+        </div>
+        <footer class="footer">
+            For more information
+            <a href="https://www.montgomerycountymd.gov/animalservices/adoption/howtoadopt.html" target="_blank" rel="noopener noreferrer"> 
+                click here!</a>
+        </footer>
+    </div>
+    <script> src='script.js'</script>
+</div>
 </body>
 </html>

@@ -1,0 +1,145 @@
+html {
+    background-color: #fff;
+    font-size: 16px;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  
+    /* these are specific to different browsers */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: rgb(239, 239, 239);
+  }
+
+  .header {
+    padding-top: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  .header h1 {
+    text-align: center;
+    display: block;
+    /* this will push other blocks out of the way */
+  
+    /* colors */
+    background-color: rgba(184, 196, 241, 0.95);
+    color: #4a4a4a;
+    border: 2px dashed;
+    /* shapes */
+    border-radius: 6px;
+    font-size: 1.5rem;
+    padding: 1.25rem;
+    margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  
+    /* box-shadows are fancy */
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+      0 0 0 1px rgb(10 10 10 / 2%);
+  }
+  .description {
+    text-align: center;
+  }
+
+  div.carousel {
+    max-width: 300px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel .slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  img {
+    width: 70;
+    height: 100;
+  }
+  
+  /* .carousel_item, */
+  .hidden {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  .carousel_item img {
+    /* 
+      Setting width, rather than max-width or min-width,
+      means annoying pop-ins won't happen
+      but it also means you need to format your images to be compatible
+      or they will stretch weird
+  
+      - try a tall one and see what happens
+      - change the height on a fixed image size and see what happens
+      - now make sure that images are _always_ square
+      - ... there's a reason crop tools are popular in image editors
+     */
+    width: 150px; 
+  }
+  
+  .prev,
+  .next {
+    border: none;
+    margin: 2px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    height: 45px;
+    padding: 10px;
+    line-height: 0; /* This centers a button's text! */
+    border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
+  }
+  
+  .prev:focus,
+  .next:focus {
+    margin: 0;
+    border: 5px solid rgb(1, 17, 86); /* shorthand for how to do a border */
+    /* Pick a good border colour and check out how it works with your buttons */
+  }
+  
+  .prev:hover,
+  .next:hover {
+    background-color: hsla(0, 74%, 52%, 0.806);
+    /* Pick a good background colour for your hover pseudoclass */
+  }
+
+  .footer {
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color: rgba(0, 139, 139, 0.8);
+    font-size: 1.2rem;
+    font-weight: 600;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+ 
+
