@@ -1,10 +1,33 @@
-/* eslint-disable max-len */
-/*
-  Welcome to Javascript!
+//This will create an asynchronous request to the API
 
-  This file contains parts of a simple script to make your carousel work.
-  Please feel free to edit away - the main version of this with all the notes is safely stored elsewhere
-*/
+async function loadData() {
+  
+    const url = 'https://data.montgomerycountymd.gov/resource/e54u-qx42.json';
+    const data = await fetch(url);
+    const json = await data.json();
+
+    
+}
+function initChart(chart, object) {
+  const labels = Object.keys(object);
+  const info = Object.keys(object).map((item) => object[item].length);
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: "Animal by Type",
+      backgroundColor: 'rgb(255 ,99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: info
+    }]
+  };
+}
+
+
+document.addEventListener("DOMContentLoaded", async () => loadData()); 
+
+
+/* eslint-disable max-len */
 /* eslint-enable max-len */
 // set our first slide's position to "0", the opening position in an array
 let slidePosition = 0;
