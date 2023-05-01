@@ -141,5 +141,31 @@ html {
     right: 0;
   }
 
+  .left_section {
+    background-color: rgba(0, 139, 139, 0.8);
+    flex: 0 1 auto;
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .right_section {
+    background-color: rgba(255, 224, 138, 0.7);
+    flex: 1 2 auto;
+    margin: 1rem;
+    align-items: center;
+    max-width: 450px;
+  }
+  .box {
+    background-color: rgba(239, 239, 239, 0.40);
+    border: 2px dashed;
+    border-radius: 4px;
+  
+    width: fit-content;
+    height:fit-content;
+    padding: 1.5rem;
+    margin: 0 auto;
+  }
+
+
  
 

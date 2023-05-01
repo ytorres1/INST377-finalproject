@@ -1,44 +1,109 @@
 //This will create an asynchronous request to the API
 
-async function loadData() {
-  
-    const url = 'https://data.montgomerycountymd.gov/resource/e54u-qx42.json';
-    const data = await fetch(url);
-    const json = await data.json();
+const apiUrl = "https://data.montgomerycountymd.gov/resource/e54u-qx42.json"
 
-    
-}
-function initChart(chart, object) {
-  const labels = Object.keys(object);
-  const info = Object.keys(object).map((item) => object[item].length);
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: "Animal by Type",
-      backgroundColor: 'rgb(255 ,99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: info
-    }]
-  };
+async function asyncRequest(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
 
+async function main() {
+  const url = apiUrl
+  try {
+    const response = await asyncRequest(url);
+    console.log(response);
+  } catch (error) {
+    console.log("error has occured")
+  }
+}
 
-document.addEventListener("DOMContentLoaded", async () => loadData()); 
+
+//THIS IS JS FOR MAKING BARCHART
+async function makeBarChart() {
+  const apiData = await asyncRequest(apiUrl)
+
+  const labels = apiData.map(obj => obj.animaltype);
+  const data = apiData.map(obj => obj.frequency);
+
+  const extraValues = document.getElementById('barChart').getContext('2d');
+
+  new Chart(extraValues, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Bar Chart',
+        data: data,
+        backgroundColor: 'rgba(0, 123, 255, 0.5)'
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
 
 
-/* eslint-disable max-len */
-/* eslint-enable max-len */
-// set our first slide's position to "0", the opening position in an array
+//THIS IS JS FOR FILTERING DATA
+
+function makeDropdown(data) {
+  const dropdown = document.getElementById('filterDropdown');
+  const uniqueOptions = [...new Set(data.map(item => item.animaltype))];
+
+  uniqueOptions.forEach(option => {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.textContent = option;
+    dropdown.appendChild(optionElement);
+  });
+}
+
+function makeDataList(data) {
+  const dataList = document.getElementById('dataList');
+  dataList.innerHTML = '';
+
+  data.forEach(item => {
+    const listItem = document.createElement('li');
+    listItem.textContent = item.petname;
+    dataList.appendChild(listItem);
+  });
+}
+
+async function filterData() {
+  const selectedOption = document.getElementById('filterDropdown').value;
+  const data = await fetchData();
+
+  if (selectedOption === 'Dog') {
+    makeDataList(data);
+  } else {
+    const filteredData = data.filter(item => item.animalType === selectedOption);
+    makeDataList(filteredData);
+  }
+}
+
+document.getElementById('filterDropdown').addEventListener('change', filterData);
+
+asyncRequest(apiUrl)
+  .then(data => {
+    makeDropdown(data);
+    makeDataList(data);
+  });
+
+//THIS IS JS FOR PICTURES
 let slidePosition = 0;
-
-// gather a reference to every slide we're using via the class name and querySelectorAll
 const slides = document.querySelectorAll('.carousel_item');
-
-// change that "NodeList" into a Javascript "array", to get access to "array methods"
 const slidesArray = Array.from(slides);
-
-// Figure out how many slides we have available
 const totalSlides = slidesArray.length;
 
 function updateSlidePosition() {
@@ -46,26 +111,10 @@ function updateSlidePosition() {
     slide.classList.remove('visible');
     slide.classList.add('hidden');
   });
-  // Using the .forEach array method, (array.forEach((element) => { per-element work goes here }))
-  // loop through all the slides in your slideArray
-  // and remove the 'visible' class from each classList
-  // then add a class 'hidden' to all of them
-
-  // outside your .forEach,
-  // add a 'visible' class to the slide at the current slidePosition in slides
   slides[slidePosition].classList.add("visible");
 };
 
-
-
-
 function moveToNextSlide() {
-  /*
-    add an if statement here that checks
-    if you're already at the max number of slides
-    and if so, sets your slidePosition to the first index of an array
-    if not, set the slidePosition to the current position plus one
-  */
  if(slidePosition === totalSlides - 1){
     slidePosition = 0;
  } else {
@@ -73,14 +122,8 @@ function moveToNextSlide() {
  }
   updateSlidePosition(); // this is how you call a function within a function
 }
+
 function moveToPrevSlide() {
-  // add your code in here for when you click the "prev" button
-  /*
-    add an if statement here that checks
-    if you're already at the first index position for an array
-    and if so, sets your slidePosition to the last slide position in totalSlides
-    if not, set the slidePosition to the current position minus one
-  */
  if(slidePosition === 0){
   slidePosition = totalSlides - 1;
  } else {
@@ -89,21 +132,17 @@ function moveToPrevSlide() {
   updateSlidePosition();
 }
 
-/*
-  These two functions have been assigned via "addEventListener"
-  to the elements accessed by the "querySelector" set to the class name on each
-*/
-document.querySelector('.next') // Get the appropriate element (<button class="next">)
-  .addEventListener('click', () => { // set an event listener on it - when it's clicked, do this callback function
-    console.log('clicked next'); // let's tell the client console we made it to this point in the script
-    moveToNextSlide(); // call the function above to handle this
+document.querySelector('.next') 
+  .addEventListener('click', () => { 
+    console.log('clicked next'); 
+    moveToNextSlide(); 
   });
 
-  document.querySelector('.prev') // Get the appropriate element (<button class="next">)
-  .addEventListener('click', () => { // set an event listener on it - when it's clicked, do this callback function
-    console.log('clicked prev'); // let's tell the client console we made it to this point in the script
-    moveToPrevSlide(); // call the function above to handle this
+  document.querySelector('.prev') 
+  .addEventListener('click', () => { 
+    console.log('clicked prev'); 
+    moveToPrevSlide(); 
   });
 
-// Paying close attention to the above queryselector, write one that fires
-// when you want a "prev" slide
+main()
+makeBarChart();

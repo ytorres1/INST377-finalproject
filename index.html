@@ -30,7 +30,7 @@
         </h3>
     </div>
 
-    <div>
+    <div class="left_section box">
         <h4>Below are some of the pets at the Adoption Center</h4>
         <div class="carousel">
             <button class="prev"> prev </button>
@@ -43,14 +43,24 @@
             <button class="next"> next </button>
         </div>
         <div>
-            <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+            <select id="filterDropdown">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Bird">Bird</option>
+                <option value="Other">Other</option>
+            </select>
+            <ul id="dataList"></ul>
+        </div>
+    </div>
+        <div class="right_section box">
+            <canvas id = "barChart"></canvas>>
           </div>
         <footer class="footer">
             For more information
             <a href="https://www.montgomerycountymd.gov/animalservices/adoption/howtoadopt.html" target="_blank" rel="noopener noreferrer"> 
                 click here!</a>
         </footer>
-    </div>
+    
     <script> src='script.js'</script>
 </div>
 </body>
