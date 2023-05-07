@@ -1,67 +1,67 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Adoption Site</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!--- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    --->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+ 
+    <!-- Make sure you put this AFTER Leaflet's CSS 
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>   -->
 </head>
-
-<body>
-    <div>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-      </div>
-
-    <div>
-
-    <header class = "header">
-        <h1> Adopt a Pet Today! </h1>
-    </header>
-
-    <div class = "description"> 
-        <h2> There are many shelter animals that are ready to be adopted 
-            from the Montgomery County Animal Services and Adoption Center. 
-            These pets are looking for a home and their home could be YOU!
-        </h2>
-        <h3> These pets can be found at: <br>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Adopt a Pet Today!</h1>
+        <h3 class="description"> There are many shelter animals that are ready to be adopted 
+          from the Montgomery County Animal Services and Adoption Center. 
+          These pets are looking for a home and their home could be YOU! 
+        </h3>
+        <h4 class="description"> These pets can be found at: <br>
             Montgomery County Animal Services and Adoption Center <br>
             7315 Muncaster Mill Rd, <br> Derwood MD 20855
-        </h3>
-    </div>
-
-    <div class="left_section box">
-        <h4>Below are some of the pets at the Adoption Center</h4>
-        <div class="carousel">
-            <button class="prev"> prev </button>
-            <div class="slides">
-                <div class="carousel_item visible"><img id = "slide_1" src=images/dog1.jpeg></div>
-                <div class="carousel_item hidden"><img id = "slide_2" src="images/dog2.jpeg" /></div>
-                <div class="carousel_item hidden"><img id = "slide_3" src="images/cat1.jpeg" /></div>
-                <div class="carousel_item hidden"><img id = "slide_4" src="images/rabbitt1.jpeg" /></div>
-            </div>
-            <button class="next"> next </button>
+        </h4>
+        </header>
+      <div class="container">
+        <div class="left_section box">
+            <h2>Search The Pet Name Here To Find Out The Type of Pet!</h2>
+          <form class="box main_form">
+            <button type="button" id = "data_load">First Click Here!</button>
+            <button type="button" id = "data_clear">Clear Here to Clear!</button>
+            <div>
+            <label for="resto">Pet Name</label>
+            <input type="text" id="resto" name="resto"/>
+            <button type="button" id= "generate">New Random List</button>
+            <!-- <button type="button" id="filter"> Filter Data</button> -->
+          </form>
         </div>
-        <div>
-            <select id="filterDropdown">
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-                <option value="Bird">Bird</option>
-                <option value="Other">Other</option>
-            </select>
-            <ul id="dataList"></ul>
         </div>
-    </div>
         <div class="right_section box">
-            <canvas id = "barChart"></canvas>>
-          </div>
-        <footer class="footer">
-            For more information
-            <a href="https://www.montgomerycountymd.gov/animalservices/adoption/howtoadopt.html" target="_blank" rel="noopener noreferrer"> 
-                click here!</a>
-        </footer>
-    
-    <script> src='script.js'</script>
-</div>
-</body>
+            <h2>Pet Types Available</h2>
+            <!-- <div id="map" class="box" ></div> -->
+            <div class="'chart_container">
+              <canvas id="myChart"></canvas>
+              <ol class="box" id ="restaurant_list">List of Adoptable Pets Will Show Here
+              </ol>
+            </div>
+            <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div> 
+        </div>
+      </div>
+      <footer class="footer">
+        For more information
+        <a href="https://www.montgomerycountymd.gov/animalservices/adoption/howtoadopt.html" target="_blank" rel="noopener noreferrer"> 
+            click here!</a>
+    </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
