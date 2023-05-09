@@ -1,23 +1,6 @@
-/* 
-    New code bonus: pure CSS data loading icon
-    This comes from loading.io/css - it's nice to show that something is happening!
-*/
-
-/* CSS instructions for Lab 5 */
-/* Bring in your successful CSS from week 4 */
-/*
-    Add a flexbox class that will keep two buttons nicely styled next to one another
-    under your HTML form and input field
- */
-
- * {
+* {
   box-sizing: border-box;
 }
-
-/* 
-    These rules apply to actual HTML elements with no labelling!
-    So: they style the tags directly
-  */
 
 html {
   background-color: #fff;
@@ -26,7 +9,6 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
 
-  /* these are specific to different browsers */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -62,13 +44,6 @@ form {
   accent-color: hsla(120, 100%, 50%, 0.482);
 }
 
-/*
-    - These styles use 'class names'
-    - You can apply them by using the 'class' attribute on your HTML
-    - like this: <div class="wrapper">
-    - note that the period vanishes there!
-  */
-
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -92,43 +67,31 @@ form {
   padding-bottom: 0rem;
 }
 
-/*
-    This rule implies that the H1 tag lives within another HTML tag
-    It "inherits" some rules from the above
-    Those rules won't apply to an h1 that's outside a block with the class of 'header'
-  */
-
 .header h1 {
   display: block;
-  /* this will push other blocks out of the way */
+  background-color: rgba(78, 59, 248, 0.4);
 
-  /* colors */
-  background-color: rgba(184, 196, 241, 0.95);
   color: #4a4a4a;
   border: 2px dashed;
-  /* shapes */
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
-
-  /* box-shadows are fancy */
+  margin: 0;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
     0 0 0 1px rgb(10 10 10 / 2%);
 }
 
-/*
-    Rules can be combined on a block to apply the 'cascade' in order
-    So you can use two classnames in a single class attribute
-    like: <div class="box section">
-  
-    Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-    And will be what displays in your client
-  */
-
 .description {
-    text-align: center;
-  }
+  text-align: center;
+  background-color: rgba(184, 196, 241, 0.95);
+  border: 2px dashed;
+  border-radius: 4px;
+
+  width: fit-content;
+  height: fit-content;
+  padding: 1.5rem;
+  margin: 0 auto;
+}
 .box {
   background-color: rgba(236, 221, 221, 0.4);
   border: 2px dashed;
@@ -348,63 +311,62 @@ form label {
 }
 
 .lds-ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
   }
-  .lds-ellipsis div {
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  100% {
+    transform: scale(1);
   }
-  .lds-ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: lds-ellipsis1 0.6s infinite;
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
   }
-  .lds-ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: lds-ellipsis2 0.6s infinite;
+  100% {
+    transform: scale(0);
   }
-  .lds-ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: lds-ellipsis2 0.6s infinite;
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
   }
-  .lds-ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: lds-ellipsis3 0.6s infinite;
+  100% {
+    transform: translate(24px, 0);
   }
-  @keyframes lds-ellipsis1 {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes lds-ellipsis3 {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-  @keyframes lds-ellipsis2 {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(24px, 0);
-    }
-  }
+}
 
-  .chart_container {
-    height: 100%;
-    width: 100%;
-  }
-  
+.chart_container {
+  height: 100%;
+  width: 100%;
+}

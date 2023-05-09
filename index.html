@@ -4,19 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Adoption Site</title>
-    
-    <!--- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
-    --->
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css" />
  
-    <!-- Make sure you put this AFTER Leaflet's CSS 
- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-     crossorigin=""></script>   -->
 </head>
   <body>
     <div class="wrapper">
@@ -35,19 +26,17 @@
         <div class="left_section box">
             <h2>Search The Pet Name Here To Find Out The Type of Pet!</h2>
           <form class="box main_form">
-            <button type="button" id = "data_load">First Click Here!</button>
-            <button type="button" id = "data_clear">Clear Here to Clear!</button>
+            
             <div>
             <label for="resto">Pet Name</label>
             <input type="text" id="resto" name="resto"/>
+            <button type="button" id = "data_load">First Click Here!</button>
             <button type="button" id= "generate">New Random List</button>
-            <!-- <button type="button" id="filter"> Filter Data</button> -->
           </form>
         </div>
         </div>
         <div class="right_section box">
             <h2>Pet Types Available</h2>
-            <!-- <div id="map" class="box" ></div> -->
             <div class="'chart_container">
               <canvas id="myChart"></canvas>
               <ol class="box" id ="restaurant_list">List of Adoptable Pets Will Show Here
