@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Adoption Site</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+ 
+</head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Adopt a Pet Today!</h1>
+        <h3 class="description"> There are many shelter animals that are ready to be adopted 
+          from the Montgomery County Animal Services and Adoption Center. 
+          These pets are looking for a home and their home could be YOU! 
+        </h3>
+        <h4 class="description"> These pets can be found at: <br>
+            Montgomery County Animal Services and Adoption Center <br>
+            7315 Muncaster Mill Rd, <br> Derwood MD 20855
+            <div class="grid">
+              <img src="images/pet1.jpeg" />
+              <img src="images/pet2.jpeg" />
+              <img src="images/pet3.jpeg" />
+              <img src="images/pet4.jpeg" />
+          </div>
+            
+
+        </h4>
+        </header>
+      <div class="container">
+        <div class="left_section box">
+            <h2>Search The Pet Name Here To Find Out The Type of Pet!</h2>
+          <form class="box main_form">
+            
+            <div>
+            <label for="resto">Pet Name</label>
+            <input type="text" id="resto" name="resto"/>
+            <button type="button" id = "data_load">First Click Here!</button>
+            <button type="button" id= "generate">New Random List</button>
+          </form>
+        </div>
+        </div>
+        <div class="right_section box">
+            <h2>Pet Types Available</h2>
+            <div class="'chart_container">
+              <canvas id="myChart"></canvas>
+              <ol class="box" id ="restaurant_list">List of Adoptable Pets Will Show Here
+              </ol>
+            </div>
+            <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div> 
+        </div>
+      </div>
+      <footer class="footer">
+        For more information
+        <a href="https://www.montgomerycountymd.gov/animalservices/adoption/howtoadopt.html" target="_blank" rel="noopener noreferrer"> 
+            click here!</a>
+    </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
